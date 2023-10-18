@@ -12,6 +12,8 @@ import {
 import { observer } from "mobx-react";
 import { useCartStore } from "../stores/CartStore"; // Updated import
 
+import lp from "../../public/localStorage.json";
+
 const { Meta } = Card;
 const { Option } = Select;
 
@@ -137,25 +139,39 @@ const Home = ({ products = [] }) => {
 };
 
 export async function getStaticProps() {
-  const response = await fetch(
-    "https://raw.githubusercontent.com/himanshu7377/products_data/main/products.json"
-  );
+  try {
+    const response = await fetch(
+      "https://raw.githubusercontent.com/himanshu7377/products_data/main/products.json"
+    );
 
-  if (response.ok) {
-    const products = await response.json();
-    return {
-      props: {
-        products,
-      },
-      revalidate: 10, // Revalidate every hour (adjust as needed)
-    };
-  } else {
-    console.error("Error fetching data:", response.statusText);
+    if (response.ok) {
+      const products = await response.json();
+      return {
+        props: {
+          products,
+        },
+        revalidate: 10,
+      };
+    } else {
+      console.error(
+        "Failed to fetch data:",
+        response.status,
+        response.statusText
+      );
+      return {
+        props: {
+          products: [],
+        },
+        revalidate: 10,
+      };
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
     return {
       props: {
         products: [],
       },
-      revalidate: 10, // Revalidate every hour (adjust as needed)
+      revalidate: 10,
     };
   }
 }

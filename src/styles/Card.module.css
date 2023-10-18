@@ -1,0 +1,53 @@
+/* Card.module.css */
+
+.card {
+  width: 300px;
+  margin: 16px;
+  background-color: #c5afcd;
+  transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card .ant-card-cover img {
+  max-width: 100%;
+  height: auto;
+}
+
+.card .ant-card-meta-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.card .ant-card-meta-description {
+  font-size: 14px;
+  color: #666;
+}
+
+.card .ant-btn {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.card .ant-btn:hover {
+  background-color: #45a049;
+}
+
+.space {
+  margin: 16px;
+}

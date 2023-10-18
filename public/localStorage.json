@@ -2,7 +2,7 @@
   {
     "name": "Ferry from Port Blair  to the  Havelock ",
     "description": "Enjoy a scenic ferry ride to Havelock Island.",
-    "image": "/images/pexels-george.jpg"
+    "image": "/images/pexels-mali.jpg"
   },
   {
     "name": "Ferry from Havelock  to  Neil",
@@ -12,11 +12,11 @@
   {
     "name": "Ferry from Neil to Port  Blair",
     "description": "Return to Port Blair after your island adventures.",
-    "image": "/images/pexels.jpg"
+    "image": "/images/pexels-matheus.jpg"
   },
   {
     "name": "Ferry from Port Blair to Havelock to Neil and back to Port Blair",
     "description": "A comprehensive island-hopping adventure.",
-    "image": "/images/pexels-harald.jpg"
+    "image": "/images/pexels-quang.jpg"
   }
 ]

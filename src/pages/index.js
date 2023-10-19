@@ -84,7 +84,11 @@ const Home = ({ products = [] }) => {
       </div>
 
       {hasItemsInCart && (
-        <Button type="primary" onClick={showCartSummary}>
+        <Button
+          type="primary"
+          style={{ marginLeft: "40%" }}
+          onClick={showCartSummary}
+        >
           View Cart Summary
         </Button>
       )}
@@ -111,12 +115,12 @@ const Home = ({ products = [] }) => {
           <Form.Item
             name="name"
             label="Name"
-            rules={[
-              {
-                required: true,
-                message: "Please enter your name!",
-              },
-            ]}
+            // rules={[
+            //   {
+            //     required: true,
+            //     message: "Please enter your name!",
+            //   },
+            // ]}
           >
             <Input />
           </Form.Item>
@@ -138,6 +142,9 @@ const Home = ({ products = [] }) => {
           </Form.Item>
           <Form.Item name="passport" label="Passport Number">
             <Input />
+          </Form.Item>
+          <Form.Item>
+            <Button> Add Passenger</Button>
           </Form.Item>
         </Form>
       </Modal>

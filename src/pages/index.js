@@ -89,14 +89,19 @@ const Home = ({ products = [] }) => {
             className={styles.card}
             cover={<img alt={product.name} src={product.image} />}
           >
-            <Meta
-              title={product.name}
-              description={product.description}
-              className={styles.meta}
-            />
-            <Button type="primary" onClick={() => showModal(product)}>
-              Add to Cart
-            </Button>
+            <div className={styles.cardContent}>
+              <Meta
+                title={<div className={styles.cardTitle}>{product.name}</div>}
+                description={product.description}
+                className={styles.meta}
+              />
+            </div>
+            <div className={styles.priceContainer}>
+              <Button type="primary" onClick={() => showModal(product)}>
+                Add to Cart
+              </Button>
+              <span className={styles.price}>Rs. 1200</span>
+            </div>
           </Card>
         ))}
       </div>

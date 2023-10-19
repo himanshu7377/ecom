@@ -19,7 +19,9 @@ const { Option } = Select;
 
 const Home = ({ products = [] }) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [passengerModalVisible, setPassengerModalVisible] = useState(false);
   const [form] = Form.useForm();
+  const [passengerForm] = Form.useForm();
   const [cartSummaryVisible, setCartSummaryVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -30,6 +32,14 @@ const Home = ({ products = [] }) => {
 
   const closeModal = () => {
     setModalVisible(false);
+  };
+
+  const showPassengerModal = () => {
+    setPassengerModalVisible(true);
+  };
+
+  const closePassengerModal = () => {
+    setPassengerModalVisible(false);
   };
 
   const showCartSummary = () => {
@@ -50,6 +60,14 @@ const Home = ({ products = [] }) => {
       });
     }
     closeModal();
+  };
+
+  const handlePassengerFormSubmit = (values) => {
+    cartStore.addCartItem({
+      product: selectedProduct,
+      passenger: values,
+    });
+    closePassengerModal();
   };
 
   const calculateTotalPrice = () => {
@@ -112,16 +130,7 @@ const Home = ({ products = [] }) => {
           >
             <DatePicker style={{ width: "100%" }} />
           </Form.Item>
-          <Form.Item
-            name="name"
-            label="Name"
-            // rules={[
-            //   {
-            //     required: true,
-            //     message: "Please enter your name!",
-            //   },
-            // ]}
-          >
+          <Form.Item name="name" label="Name">
             <Input />
           </Form.Item>
           <Form.Item name="email" label="Email">
@@ -144,7 +153,38 @@ const Home = ({ products = [] }) => {
             <Input />
           </Form.Item>
           <Form.Item>
-            <Button> Add Passenger</Button>
+            <Button type="default" onClick={showPassengerModal}>
+              Add Passenger
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
+
+      <Modal
+        title="Passenger Modal"
+        visible={passengerModalVisible}
+        onOk={() => passengerForm.submit()}
+        onCancel={closePassengerModal}
+      >
+        <Form form={passengerForm} onFinish={handlePassengerFormSubmit}>
+          {/* Add passenger form fields here */}
+          <Form.Item
+            name="travelDate"
+            label="Travel Date"
+            rules={[
+              {
+                required: true,
+                message: "Please select a travel date!",
+              },
+            ]}
+          >
+            <DatePicker style={{ width: "100%" }} />
+          </Form.Item>
+          <Form.Item name="name" label="Name">
+            <Input />
+          </Form.Item>
+          <Form.Item name="email" label="Email">
+            <Input />
           </Form.Item>
         </Form>
       </Modal>

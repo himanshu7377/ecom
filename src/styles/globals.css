@@ -40,11 +40,6 @@
   --card-border-rgb: 131, 134, 135;
 }
 
-.page-container {
-  background-color: #f8f8f8; /* Replace with your desired background color */
-  font-family: Arial, sans-serif;
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     --foreground-rgb: 248, 248, 248;
